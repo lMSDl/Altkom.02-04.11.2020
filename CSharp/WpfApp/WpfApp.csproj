@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\CustomeCommand.cs" />
+    <Compile Include="Commands\CustomCommand.cs" />
     <Compile Include="ViewModels\EducatorDialogViewModel.cs" />
     <Compile Include="ViewModels\EducatorsViewModel.cs" />
     <Compile Include="ViewModels\StudentsViewModel.cs" />
