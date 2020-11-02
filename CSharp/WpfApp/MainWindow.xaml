@@ -7,49 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
-    <DockPanel>
-        <Button DockPanel.Dock="Bottom">Button</Button>
-        <Button DockPanel.Dock="Right">Button</Button>
-        <Button DockPanel.Dock="Top">Button</Button>
-        <Button DockPanel.Dock="Right">Button</Button>
-        <Grid>
+    <DockPanel Background="Gray">
+        <TextBox DockPanel.Dock="Bottom" Margin="10">EditBox</TextBox>
+        <TextBox DockPanel.Dock="Top" Margin="10">EditBox</TextBox>
+        <Grid Background="DarkGray" Margin="10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <Viewbox  Grid.Column="0" Grid.Row="2" Stretch="None">
-                <Button  >1</Button>
-            </Viewbox>
-            <Button Grid.Column="1" Grid.Row="1" >Button 2</Button>
-            <Button Grid.Column="2" Grid.Row="0" >3</Button>
+            <Button Background="Azure" Margin="10" Grid.Column="0">Button</Button>
+            <StackPanel Background="White" Margin="10" Grid.Column="1" VerticalAlignment="Center">
+                <Label Background="Red" Margin="10">Label</Label>
+                <Label Background="Green" Margin="10">Label</Label>
+                <Label Background="Blue" Margin="10">Label</Label>
+            </StackPanel>
         </Grid>
-
-        <Canvas>
-            <Rectangle Canvas.Top="150" Canvas.Left="25" Width="50" Height=" 50" Fill="Aqua"/>
-        </Canvas>
-
-        <WrapPanel>
-            <Button>Button</Button>
-            <Button>Button</Button>
-            <Button>Button</Button>
-            <Button>Button</Button>
-        </WrapPanel>
-        <StackPanel>
-
-            <Button>Button</Button>
-            <Button>Button</Button>
-            <Button>Button</Button>
-
-            <Label>Test label</Label>
-            <TextBox/>
-        </StackPanel>
     </DockPanel>
 
 </Window>
