@@ -56,18 +56,26 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\CustomCommand.cs" />
-    <Compile Include="ViewModels\EducatorDialogViewModel.cs" />
+    <Compile Include="ViewModels\PeopleViewModel.cs" />
+    <Compile Include="ViewModels\PersonDialogViewModel.cs" />
     <Compile Include="ViewModels\EducatorsViewModel.cs" />
     <Compile Include="ViewModels\StudentsViewModel.cs" />
+    <Compile Include="Views\StudentDialogView.xaml.cs">
+      <DependentUpon>StudentDialogView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EducatorDialogView.xaml.cs">
       <DependentUpon>EducatorDialogView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EducatorssView.xaml.cs">
-      <DependentUpon>EducatorssView.xaml</DependentUpon>
+    <Compile Include="Views\EducatorsView.xaml.cs">
+      <DependentUpon>EducatorsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StudentsView.xaml.cs">
       <DependentUpon>StudentsView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\StudentDialogView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\EducatorDialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,7 +92,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\EducatorssView.xaml">
+    <Page Include="Views\EducatorsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -17,8 +17,8 @@
             <Button Content="{x:Static resources:Resources.Edit}" Command="{Binding EditCommand}"/>
             <Button Content="{x:Static resources:Resources.Delete}" Command="{Binding DeleteCommand}"/>
         </StackPanel>
-    <DataGrid ItemsSource="{Binding Educators}"
-              SelectedItem="{Binding SelectedEducator}"
+    <DataGrid ItemsSource="{Binding People}"
+              SelectedItem="{Binding SelectedPerson}"
               AutoGenerateColumns="False"
               IsReadOnly="True"
               ColumnWidth="*">
