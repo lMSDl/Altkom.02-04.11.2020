@@ -11,7 +11,14 @@
     <UserControl.DataContext>
         <viewModels:EducatorsViewModel/>
     </UserControl.DataContext>
+    <DockPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+            <Button Content="{x:Static resources:Resources.Add}" Command="{Binding AddCommand}"/>
+            <Button Content="{x:Static resources:Resources.Edit}" Command="{Binding EditCommand}"/>
+            <Button Content="{x:Static resources:Resources.Delete}" Command="{Binding DeleteCommand}"/>
+        </StackPanel>
     <DataGrid ItemsSource="{Binding Educators}"
+              SelectedItem="{Binding SelectedEducator}"
               AutoGenerateColumns="False"
               IsReadOnly="True"
               ColumnWidth="*">
@@ -20,5 +27,6 @@
             <DataGridTextColumn Header="{x:Static resources:Resources.LastName}" Binding="{Binding LastName}"/>
             <DataGridTextColumn Header="{x:Static resources:Resources.Specialization}" Binding="{Binding Specialization}"/>
         </DataGrid.Columns>
-    </DataGrid>
+        </DataGrid>
+    </DockPanel>
 </UserControl>

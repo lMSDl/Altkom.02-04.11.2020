@@ -55,14 +55,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\CustomeCommand.cs" />
+    <Compile Include="ViewModels\EducatorDialogViewModel.cs" />
     <Compile Include="ViewModels\EducatorsViewModel.cs" />
     <Compile Include="ViewModels\StudentsViewModel.cs" />
+    <Compile Include="Views\EducatorDialogView.xaml.cs">
+      <DependentUpon>EducatorDialogView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EducatorssView.xaml.cs">
       <DependentUpon>EducatorssView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StudentsView.xaml.cs">
       <DependentUpon>StudentsView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\EducatorDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

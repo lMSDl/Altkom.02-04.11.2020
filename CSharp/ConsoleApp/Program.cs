@@ -15,6 +15,28 @@ namespace ConsoleApp
             var example = new EventExample();
             example.Test();
 
+
+            Nullable<int> a = null;
+            int? b = 5;
+            int c;
+
+            if(a - b == 0 || a - b == null)
+            {
+                c = (a + b) ?? 0;
+            }
+            else
+            {
+                var result = a - b;
+                if (result.HasValue)// (result != null)
+                    c = result.Value;
+                else
+                    c = 0;
+            }
+
+            c = (a - b == 0 || a - b == null) ? ((a + b) ?? 0) : (a - b ?? 0);
+            c = ((a - b == 0 || a - b == null) ? (a + b) : (a - b)) ?? 0;
+
+
             System.Console.ReadLine();
         }
     }

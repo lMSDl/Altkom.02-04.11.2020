@@ -1,0 +1,25 @@
+﻿<Window x:Class="WpfApp.Views.EducatorDialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp.Views"
+             xmlns:resources="clr-namespace:WpfApp.Properties"
+        mc:Ignorable="d"
+        x:Name="DialogWindow"
+        Title="EducatorDialogView" Height="450" Width="800">
+    <DockPanel>
+        <WrapPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+            <Button Content="{x:Static resources:Resources.Ok}" IsDefault="True" Command="{Binding OkCommand}" CommandParameter="{Binding ElementName=DialogWindow}"/>
+            <Button Content="{x:Static resources:Resources.Cancel}" IsCancel="True"/>
+        </WrapPanel>
+        <StackPanel Orientation="Vertical">
+            <Label Content="{x:Static resources:Resources.FirstName}"/>
+            <TextBox Text="{Binding Educator.FirstName}"/>
+            <Label Content="{x:Static resources:Resources.LastName}"/>
+            <TextBox Text="{Binding Educator.LastName}"/>
+            <Label Content="{x:Static resources:Resources.Specialization}"/>
+            <TextBox Text="{Binding Educator.Specialization}"/>
+        </StackPanel>
+    </DockPanel>
+</Window>
