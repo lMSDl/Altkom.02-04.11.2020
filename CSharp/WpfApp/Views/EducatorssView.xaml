@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WpfApp.Views.StudentsView"
+﻿<UserControl x:Class="WpfApp.Views.EducatorsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,15 +9,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
-        <viewModels:StudentsViewModel/>
+        <viewModels:EducatorsViewModel/>
     </UserControl.DataContext>
-    <DataGrid ItemsSource="{Binding Students}"
+    <DataGrid ItemsSource="{Binding Educators}"
               AutoGenerateColumns="False"
               IsReadOnly="True"
               ColumnWidth="*">
         <DataGrid.Columns>
             <DataGridTextColumn Header="{x:Static resources:Resources.FirstName}" Binding="{Binding FirstName}"/>
             <DataGridTextColumn Header="{x:Static resources:Resources.LastName}" Binding="{Binding LastName}"/>
+            <DataGridTextColumn Header="{x:Static resources:Resources.Specialization}" Binding="{Binding Specialization}"/>
         </DataGrid.Columns>
     </DataGrid>
 </UserControl>

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Student : Person
+    public class Educator : Person
     {
+        public string Specialization { get; set; }
     }
 }

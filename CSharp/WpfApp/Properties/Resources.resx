@@ -123,4 +123,7 @@
   <data name="LastName" xml:space="preserve">
     <value>Imię</value>
   </data>
+  <data name="Specialization" xml:space="preserve">
+    <value>Specjalizacja</value>
+  </data>
 </root>
