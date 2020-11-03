@@ -8,6 +8,7 @@ namespace Models
 {
     public class Educator : Person
     {
+        public int EducatorId { get; set; }
         public string Specialization { get; set; }
     }
 }
