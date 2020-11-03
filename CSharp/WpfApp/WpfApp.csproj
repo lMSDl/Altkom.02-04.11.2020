@@ -56,6 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\CustomCommand.cs" />
+    <Compile Include="Converters\DateTimeToAgeConverter.cs" />
+    <Compile Include="Converters\DateTimeToStringConverter.cs" />
     <Compile Include="ViewModels\PeopleViewModel.cs" />
     <Compile Include="ViewModels\PersonDialogViewModel.cs" />
     <Compile Include="ViewModels\EducatorsViewModel.cs" />

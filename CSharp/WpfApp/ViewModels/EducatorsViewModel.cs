@@ -16,7 +16,7 @@ namespace WpfApp.ViewModels
     {
 
         public EducatorsViewModel() {
-            People = new ObservableCollection<Person>() { new Educator { FirstName = "Filip", LastName = "Filipowski", Specialization = "Gotowanie" }, new Educator { FirstName = "Monika", LastName = "Monikowska", Specialization = "Mechanika" } };
+            People = new ObservableCollection<Person>() { new Educator { FirstName = "Filip", LastName = "Filipowski", Specialization = "Gotowanie", BirthDate = new DateTime(1987, 12, 12) }, new Educator { FirstName = "Monika", LastName = "Monikowska", Specialization = "Mechanika", Gender = Genders.Female } };
             
         }
 

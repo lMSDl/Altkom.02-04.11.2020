@@ -25,7 +25,7 @@ namespace WpfApp.ViewModels
         public abstract ICommand AddCommand { get; }
         public ICommand EditCommand => new CustomCommand(x => AddOrEdit(SelectedPerson), x => SelectedPerson != null);
 
-        protected void AddOrEdit(Person person)
+        protected virtual void AddOrEdit(Person person)
         {
             var clone = (Person)person.Clone();
             var dialog = GetDialogView(clone);
