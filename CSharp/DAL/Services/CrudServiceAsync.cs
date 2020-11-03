@@ -4,20 +4,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Entity;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace DAL.Services
 {
-    public class CrudService<T> : ICrudService<T> where T : class, new()
+    public class CrudServiceAsync<T> : ICrudServiceAsync<T> where T : class, new()
     {
-        public T Create(T entity)
+        public async Task<T> CreateAsync(T entity)
         {
             using (var context = new Context())
             {
-
                 entity = context.Set<T>().Add(entity);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
             return entity;
         }
@@ -35,45 +35,46 @@ namespace DAL.Services
         //    }
         //}
 
-        public bool Delete(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            var entity = Read(id);
+            var entity = await ReadAsync(id);
             if (entity == null)
                 return false;
             using (var context = new Context())
             {
                 context.Set<T>().Attach(entity);
                 context.Set<T>().Remove(entity);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
                 return true;
             }
         }
 
-        public T Read(int id)
+        public async Task<T> ReadAsync(int id)
         {
             using (var context = new Context())
             {
-                return context.Set<T>().Find(id);
+                return await context.Set<T>().FindAsync(id);
             }
         }
 
-        public ICollection<T> Read()
+        public async Task<ICollection<T>> ReadAsync()
         {
             using (var context = new Context())
             {
-                Thread.Sleep(5000);
+                await Task.Delay(5000);
                 //return context.Database.SqlQuery<T>("SELECT * FROM dbo.Educators").ToList();
-                return context.Set<T>().ToList();
+                return await context.Set<T>().ToListAsync();
             }
         }
 
-        public void Update(T entity)
+
+        public async Task UpdateAsync(T entity)
         {
             using (var context = new Context())
             {
                 context.Set<T>().Attach(entity);
                 context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
         }
     }

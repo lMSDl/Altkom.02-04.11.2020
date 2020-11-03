@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 using WpfApp.Commands;
 using WpfApp.Views;
 
@@ -16,7 +17,7 @@ namespace WpfApp.ViewModels
 {
     public class EducatorsViewModel : PeopleViewModel<Educator>
     {
-        private ICrudService<Educator> Service { get; } = new EducatorService(); 
+        private ICrudServiceAsync<Educator> Service { get; } = new CrudServiceAsync<Educator>(); 
 
         public EducatorsViewModel() {
             Refresh();
@@ -29,25 +30,30 @@ namespace WpfApp.ViewModels
             return new EducatorDialogView(person);
         }
 
-        protected override void Create(Educator person)
+        protected async override void Create(Educator person)
         {
-            Service.Create(person);
+            await Service.CreateAsync(person);
         }
 
-        protected override void Update(Educator person)
+        protected async override void Update(Educator person)
         {
-            Service.Update(person);
+           await Service.UpdateAsync(person);
         }
 
-        protected override void Refresh()
+        protected async override void Refresh()
         {
-            People = new ObservableCollection<Educator> (Service.Read());
+            People = new ObservableCollection<Educator> (await Service.ReadAsync());
         }
 
         protected override void Delete(Educator person)
         {
-            if (Service.Delete(person.Id))
-                People.Remove(person);
+            Service.DeleteAsync(person.Id)
+                .ContinueWith(task =>
+            {
+                if(task.Result)
+                    Application.Current.Dispatcher.Invoke(() => 
+                    People.Remove(person));
+            });
         }
     }
 }

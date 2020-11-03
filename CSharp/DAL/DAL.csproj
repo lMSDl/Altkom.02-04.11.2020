@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CrudServiceAsync.cs" />
     <Compile Include="Services\CrudService.cs" />
     <Compile Include="Services\EducatorService.cs" />
   </ItemGroup>
