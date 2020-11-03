@@ -68,6 +68,7 @@
     <Compile Include="Commands\CustomCommand.cs" />
     <Compile Include="Converters\DateTimeToAgeConverter.cs" />
     <Compile Include="Converters\DateTimeToStringConverter.cs" />
+    <Compile Include="Models\ApplicationContext.cs" />
     <Compile Include="ViewModels\PeopleViewModel.cs" />
     <Compile Include="ViewModels\PersonDialogViewModel.cs" />
     <Compile Include="ViewModels\EducatorsViewModel.cs" />
