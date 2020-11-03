@@ -10,5 +10,7 @@ namespace Models
     {
         public int EducatorId { get; set; }
         public string Specialization { get; set; }
+
+        public override int Id => EducatorId;
     }
 }

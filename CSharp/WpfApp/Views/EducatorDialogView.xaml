@@ -20,6 +20,8 @@
             <TextBox Text="{Binding Person.LastName}"/>
             <Label Content="{x:Static resources:Resources.Specialization}"/>
             <TextBox Text="{Binding Person.Specialization}"/>
+            <Label Content="{x:Static resources:Resources.BirthDate}"/>
+            <DatePicker SelectedDate="{Binding Person.BirthDate, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
     </DockPanel>
 </Window>

@@ -10,6 +10,7 @@ namespace Models
     {
         public int StudentId { get; set; }
 
-        public ICollection<Class> Classes {get ;set;}
+        public ICollection<Class> Classes {get ;set; }
+        public override int Id => StudentId;
     }
 }

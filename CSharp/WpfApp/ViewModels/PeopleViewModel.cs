@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,34 +12,57 @@ using WpfApp.Commands;
 
 namespace WpfApp.ViewModels
 {
-    public abstract class PeopleViewModel
+    public abstract class PeopleViewModel<T> : INotifyPropertyChanged where T : Person
     {
-        public ObservableCollection<Person> People { get; protected set; }
-        public Person SelectedPerson { get; set; }
+        private ObservableCollection<T> _people;
+
+        public ObservableCollection<T> People
+        {
+            get => _people;
+            protected set
+            {
+                _people = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(People)));
+            }
+        }
+        public T SelectedPerson { get; set; }
 
         public PeopleViewModel()
         {
-            DeleteCommand = new CustomCommand(x => People.Remove(SelectedPerson), x => SelectedPerson != null && People.Contains(SelectedPerson));
+            DeleteCommand = new CustomCommand(x => Delete(SelectedPerson), x => SelectedPerson != null && People.Contains(SelectedPerson));
         }
 
         public ICommand DeleteCommand { get; }
         public abstract ICommand AddCommand { get; }
         public ICommand EditCommand => new CustomCommand(x => AddOrEdit(SelectedPerson), x => SelectedPerson != null);
 
-        protected virtual void AddOrEdit(Person person)
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void AddOrEdit(T person)
         {
-            var clone = (Person)person.Clone();
+            var clone = (T)person.Clone();
             var dialog = GetDialogView(clone);
             if (dialog.ShowDialog() != true)
             {
                 return;
             }
 
-            if (People.Contains(SelectedPerson))
-                People.Remove(SelectedPerson);
-            People.Add(clone);
+            if (person.Id == 0)
+            {
+                Create(clone);
+            }
+            else
+            {
+                Update(clone);
+            }
+            Refresh();
         }
 
-        protected abstract Window GetDialogView(Person person);
+        protected abstract void Create(T person);
+        protected abstract void Update(T person);
+        protected abstract void Refresh();
+        protected abstract void Delete(T person);
+
+        protected abstract Window GetDialogView(T person);
     }
 }

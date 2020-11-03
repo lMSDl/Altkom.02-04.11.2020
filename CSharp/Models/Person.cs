@@ -13,6 +13,7 @@ namespace Models
         public string FullName => $"{LastName} {FirstName}";
         public Genders Gender { get; set; }
         public DateTime BirthDate { get; set; }
+        public abstract int Id {get;}
 
         public object Clone()
         {
