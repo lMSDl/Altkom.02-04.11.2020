@@ -178,6 +178,15 @@ namespace WpfApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Serializuj do XML.
+        /// </summary>
+        public static string SerializeToXml {
+            get {
+                return ResourceManager.GetString("SerializeToXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Specjalizacja.
         /// </summary>
         public static string Specialization {

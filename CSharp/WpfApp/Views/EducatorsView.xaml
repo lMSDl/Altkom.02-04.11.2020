@@ -23,6 +23,7 @@
             <Button Content="{x:Static resources:Resources.Filter}" Command="{Binding FilterCommand}"/>
             <Button Content="{x:Static resources:Resources.SerializeToJson}" Command="{Binding ToJsonCommand}"/>
             <Button Content="{x:Static resources:Resources.DeserializeFromJson}" Command="{Binding FromJsonCommand}"/>
+            <Button Content="{x:Static resources:Resources.SerializeToXml}" Command="{Binding ToXmlCommand}"/>
         </StackPanel>
     <DataGrid ItemsSource="{Binding People}"
               SelectedItem="{Binding SelectedPerson}"

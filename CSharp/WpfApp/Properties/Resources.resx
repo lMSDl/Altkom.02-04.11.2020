@@ -156,6 +156,9 @@
   <data name="SerializeToJson" xml:space="preserve">
     <value>Serializuje do Json</value>
   </data>
+  <data name="SerializeToXml" xml:space="preserve">
+    <value>Serializuj do XML</value>
+  </data>
   <data name="Specialization" xml:space="preserve">
     <value>Specjalizacja</value>
   </data>
