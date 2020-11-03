@@ -1,8 +1,11 @@
-﻿using Models;
+﻿using Microsoft.Win32;
+using Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,8 +38,41 @@ namespace WpfApp.ViewModels
         public ICommand DeleteCommand { get; }
         public abstract ICommand AddCommand { get; }
         public ICommand EditCommand => new CustomCommand(x => AddOrEdit(SelectedPerson), x => SelectedPerson != null);
+        public ICommand ToJsonCommand => new CustomCommand(x => ToJson(SelectedPerson), x => SelectedPerson != null);
+        public ICommand FromJsonCommand => new CustomCommand(x => FromJson());
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void ToJson(T person)
+        {
+
+            var settings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                Formatting = Formatting.Indented,
+                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
+                DefaultValueHandling = DefaultValueHandling.Ignore
+            };
+            
+            var json = JsonConvert.SerializeObject(person, settings);
+
+            File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + $"\\{person.FullName}.json", json);
+        }
+
+        protected void FromJson()
+        {
+            var dialog = new OpenFileDialog()
+            {
+                FileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                Filter = ".json|*.json|All|*.*"
+        };
+            if (dialog.ShowDialog() != true)
+                return;
+
+            var json = File.ReadAllText(dialog.FileName);
+            var person = JsonConvert.DeserializeObject<T>(json);
+            AddOrEdit(person);
+        }
 
         protected async virtual void AddOrEdit(T person)
         {

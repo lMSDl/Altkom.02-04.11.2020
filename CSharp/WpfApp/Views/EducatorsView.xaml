@@ -21,6 +21,8 @@
             <Button Content="{x:Static resources:Resources.Edit}" Command="{Binding EditCommand}"/>
             <Button Content="{x:Static resources:Resources.Delete}" Command="{Binding DeleteCommand}"/>
             <Button Content="{x:Static resources:Resources.Filter}" Command="{Binding FilterCommand}"/>
+            <Button Content="{x:Static resources:Resources.SerializeToJson}" Command="{Binding ToJsonCommand}"/>
+            <Button Content="{x:Static resources:Resources.DeserializeFromJson}" Command="{Binding FromJsonCommand}"/>
         </StackPanel>
     <DataGrid ItemsSource="{Binding People}"
               SelectedItem="{Binding SelectedPerson}"
