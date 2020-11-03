@@ -106,11 +106,29 @@ namespace WpfApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deserializuj z Json.
+        /// </summary>
+        public static string DeserializeFromJson {
+            get {
+                return ResourceManager.GetString("DeserializeFromJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edytuj.
         /// </summary>
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filtruj.
+        /// </summary>
+        public static string Filter {
+            get {
+                return ResourceManager.GetString("Filter", resourceCulture);
             }
         }
         
@@ -147,6 +165,15 @@ namespace WpfApp.Properties {
         public static string Ok {
             get {
                 return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serializuje do Json.
+        /// </summary>
+        public static string SerializeToJson {
+            get {
+                return ResourceManager.GetString("SerializeToJson", resourceCulture);
             }
         }
         

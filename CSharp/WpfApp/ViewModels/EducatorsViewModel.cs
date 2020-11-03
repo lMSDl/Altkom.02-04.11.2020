@@ -17,25 +17,26 @@ namespace WpfApp.ViewModels
 {
     public class EducatorsViewModel : PeopleViewModel<Educator>
     {
-        private ICrudServiceAsync<Educator> Service { get; } = new CrudServiceAsync<Educator>(); 
+        private IEducatorsService Service { get; } = new EducatorsService(); 
 
         public EducatorsViewModel() {
             Refresh();
         }
 
         public override ICommand AddCommand => new CustomCommand(x => AddOrEdit(new Educator()));
+        public ICommand FilterCommand => new CustomCommand(async x => People = new ObservableCollection<Educator>( await Service.ReadBySpecializationAsync(null)));
 
         protected override Window GetDialogView(Educator person)
         {
             return new EducatorDialogView(person);
         }
 
-        protected async override void Create(Educator person)
+        protected async override Task Create(Educator person)
         {
             await Service.CreateAsync(person);
         }
 
-        protected async override void Update(Educator person)
+        protected async override Task Update(Educator person)
         {
            await Service.UpdateAsync(person);
         }
@@ -45,7 +46,7 @@ namespace WpfApp.ViewModels
             People = new ObservableCollection<Educator> (await Service.ReadAsync());
         }
 
-        protected override void Delete(Educator person)
+        protected override Task Delete(Educator person)
         {
             Service.DeleteAsync(person.Id)
                 .ContinueWith(task =>
@@ -54,6 +55,8 @@ namespace WpfApp.ViewModels
                     Application.Current.Dispatcher.Invoke(() => 
                     People.Remove(person));
             });
+
+            return Task.FromResult(0);
         }
     }
 }

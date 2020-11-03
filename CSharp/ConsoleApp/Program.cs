@@ -12,7 +12,7 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            var example = new EventExample();
+            var example = new LinqExamples();
             example.Test();
 
 

@@ -20,12 +20,12 @@ namespace WpfApp.ViewModels
 
         public override ICommand AddCommand => new CustomCommand(x => AddOrEdit(new Student()));
 
-        protected override void Create(Student person)
+        protected override Task Create(Student person)
         {
             throw new NotImplementedException();
         }
 
-        protected override void Delete(Student person)
+        protected override Task Delete(Student person)
         {
             throw new NotImplementedException();
         }
@@ -40,7 +40,7 @@ namespace WpfApp.ViewModels
             throw new NotImplementedException();
         }
 
-        protected override void Update(Student person)
+        protected override Task Update(Student person)
         {
             throw new NotImplementedException();
         }

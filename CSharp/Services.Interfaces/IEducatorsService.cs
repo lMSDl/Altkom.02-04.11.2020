@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Services.Interfaces
 {
-    public interface IEducatorsService : ICrudService<Educator>
+    public interface IEducatorsService : ICrudServiceAsync<Educator>
     {
+        Task<ICollection<Educator>> ReadBySpecializationAsync(string specialization);
     }
 }

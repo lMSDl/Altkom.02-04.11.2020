@@ -38,7 +38,7 @@ namespace WpfApp.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void AddOrEdit(T person)
+        protected async virtual void AddOrEdit(T person)
         {
             var clone = (T)person.Clone();
             var dialog = GetDialogView(clone);
@@ -49,19 +49,19 @@ namespace WpfApp.ViewModels
 
             if (person.Id == 0)
             {
-                Create(clone);
+                await Create(clone);
             }
             else
             {
-                Update(clone);
+                await Update(clone);
             }
             Refresh();
         }
 
-        protected abstract void Create(T person);
-        protected abstract void Update(T person);
+        protected abstract Task Create(T person);
+        protected abstract Task Update(T person);
         protected abstract void Refresh();
-        protected abstract void Delete(T person);
+        protected abstract Task Delete(T person);
 
         protected abstract Window GetDialogView(T person);
     }

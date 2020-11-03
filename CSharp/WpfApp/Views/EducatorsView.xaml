@@ -20,6 +20,7 @@
             <Button Content="{x:Static resources:Resources.Add}" Command="{Binding AddCommand}"/>
             <Button Content="{x:Static resources:Resources.Edit}" Command="{Binding EditCommand}"/>
             <Button Content="{x:Static resources:Resources.Delete}" Command="{Binding DeleteCommand}"/>
+            <Button Content="{x:Static resources:Resources.Filter}" Command="{Binding FilterCommand}"/>
         </StackPanel>
     <DataGrid ItemsSource="{Binding People}"
               SelectedItem="{Binding SelectedPerson}"

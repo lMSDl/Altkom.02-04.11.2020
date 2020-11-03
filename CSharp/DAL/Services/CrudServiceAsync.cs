@@ -61,7 +61,7 @@ namespace DAL.Services
         {
             using (var context = new Context())
             {
-                await Task.Delay(5000);
+                //await Task.Delay(5000);
                 //return context.Database.SqlQuery<T>("SELECT * FROM dbo.Educators").ToList();
                 return await context.Set<T>().ToListAsync();
             }

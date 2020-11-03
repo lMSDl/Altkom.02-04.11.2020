@@ -12,7 +12,7 @@ namespace Models
         public string LastName { get; set; }
         public string FullName => $"{LastName} {FirstName}";
         public Genders Gender { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime BirthDate { get; set; } = DateTime.Today;
         public abstract int Id {get;}
 
         public object Clone()
