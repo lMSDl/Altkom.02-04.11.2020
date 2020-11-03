@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class.cs" />
     <Compile Include="Converters\EnumTypeConverter.cs" />
     <Compile Include="Educator.cs" />
     <Compile Include="Genders.cs" />

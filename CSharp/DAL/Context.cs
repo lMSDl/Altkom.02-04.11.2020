@@ -20,6 +20,8 @@ namespace DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new EducatorConfiguration());
+            modelBuilder.Configurations.Add(new StudentConfiguration());
+            modelBuilder.Configurations.Add(new ClassConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

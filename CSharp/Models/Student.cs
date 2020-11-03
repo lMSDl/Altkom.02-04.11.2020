@@ -8,5 +8,8 @@ namespace Models
 {
     public class Student : Person
     {
+        public int StudentId { get; set; }
+
+        public ICollection<Class> Classes {get ;set;}
     }
 }

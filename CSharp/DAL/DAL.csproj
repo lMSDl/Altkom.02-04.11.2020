@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\ClassConfiguration.cs" />
+    <Compile Include="Configurations\StudentConfiguration.cs" />
     <Compile Include="Configurations\EducatorConfiguration.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Migrations\202011030932162_AddEducator.cs" />
@@ -60,6 +62,10 @@
     <Compile Include="Migrations\202011030939209_AddSpecializationToEducator.cs" />
     <Compile Include="Migrations\202011030939209_AddSpecializationToEducator.designer.cs">
       <DependentUpon>202011030939209_AddSpecializationToEducator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011031041004_AddStudentAndClass.cs" />
+    <Compile Include="Migrations\202011031041004_AddStudentAndClass.designer.cs">
+      <DependentUpon>202011031041004_AddStudentAndClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +86,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011030939209_AddSpecializationToEducator.resx">
       <DependentUpon>202011030939209_AddSpecializationToEducator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011031041004_AddStudentAndClass.resx">
+      <DependentUpon>202011031041004_AddStudentAndClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
