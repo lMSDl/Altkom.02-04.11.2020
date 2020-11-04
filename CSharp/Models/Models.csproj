@@ -58,6 +58,8 @@
     <Compile Include="Converters\EnumTypeConverter.cs" />
     <Compile Include="DataErrorInfo.cs" />
     <Compile Include="Educator.cs" />
+    <Compile Include="Encryptors\AsymmetricEncryptor.cs" />
+    <Compile Include="Encryptors\Encryptor.cs" />
     <Compile Include="Genders.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

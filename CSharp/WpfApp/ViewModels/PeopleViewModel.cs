@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Models;
+using Models.Encryptors;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -63,8 +64,12 @@ namespace WpfApp.ViewModels
         protected void ToJson(T person)
         {
             string json = ToJsonString(person);
+            //var encyrpotedJson = new Encryptor("abcabcabc").Encrypt(json, "pa$$w0rd");
+            var encyrpotedJson = new AsymmetricEncryptor().Encrypt(json, "CN=localhost");
+
 
             File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + $"\\{person.FullName}.json", json);
+            File.WriteAllBytes(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + $"\\{person.FullName}.json_", encyrpotedJson);
         }
 
         private static string ToJsonString(T person)
@@ -87,12 +92,21 @@ namespace WpfApp.ViewModels
             var dialog = new OpenFileDialog()
             {
                 FileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-                Filter = ".json|*.json|All|*.*"
-        };
+                Filter = ".json|*.json|.json_|*.json_|All|*.*"
+            };
             if (dialog.ShowDialog() != true)
                 return;
-
-            var json = File.ReadAllText(dialog.FileName);
+            string json;
+            if (dialog.FileName.EndsWith("_"))
+            {
+                //var decryptedJson = new Encryptor("abcabcabc").Decrypt(File.ReadAllBytes(dialog.FileName), "pa$$w0rd");
+                var decryptedJson = new AsymmetricEncryptor().Decrypt(File.ReadAllBytes(dialog.FileName), "CN=localhost");
+                json = Encoding.Unicode.GetString(decryptedJson);
+            }
+            else
+            {
+                json = File.ReadAllText(dialog.FileName);
+            }
             var person = JsonConvert.DeserializeObject<T>(json);
             AddOrEdit(person);
         }

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfEducator">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Educator" nillable="true" type="tns:Educator" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEducator" nillable="true" type="tns:ArrayOfEducator" />
+  <xs:complexType name="Educator">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Person">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EducatorId" type="xs:int" />
+          <xs:element minOccurs="0" name="Specialization" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Educator" nillable="true" type="tns:Educator" />
+  <xs:complexType name="Person">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataErrorInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BirthDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Gender" type="tns:Genders" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Person" nillable="true" type="tns:Person" />
+  <xs:complexType name="DataErrorInfo">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="DataErrorInfo" nillable="true" type="tns:DataErrorInfo" />
+  <xs:simpleType name="Genders">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Male" />
+      <xs:enumeration value="Female" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Genders" nillable="true" type="tns:Genders" />
+</xs:schema>

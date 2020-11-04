@@ -16,6 +16,11 @@ namespace ConsoleApp
             var example = new IndexerExample();
             example.Test();
 
+            ServiceReference3.ICalculator calculator = new ServiceReference3.CalculatorClient();
+            Console.WriteLine(  calculator.Multiply(3, 5));
+
+            ServiceReference2.IDALService dal = new ServiceReference2.DALServiceClient();
+            var educators = dal.Read();
 
             Nullable<int> a = null;
             int? b = 5;
