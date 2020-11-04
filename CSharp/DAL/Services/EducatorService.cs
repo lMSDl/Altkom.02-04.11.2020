@@ -18,7 +18,7 @@ namespace DAL.Services
             }
         }
 
-        public async Task<ICollection<Educator>> Read(int limit)
+        public async Task<ICollection<Educator>> ReadWithLimitAsync(int limit)
         {
             using (var context = new Context())
             {
