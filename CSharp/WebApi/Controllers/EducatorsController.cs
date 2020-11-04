@@ -28,7 +28,7 @@ namespace WebApi.Controllers
             else if(limit.HasValue)
                 educators = educators.Take(limit.Value);
 
-            return Ok(educators);
+            return Ok(educators.Concat(educators));
         }
 
 
@@ -41,24 +41,27 @@ namespace WebApi.Controllers
             return Ok(educator);
         }
 
-        public async Task<IHttpActionResult> Post(Educator educator)
+        public async Task<IHttpActionResult> Post([FromBody]Educator educator)
         {
             educator = await Service.CreateAsync(educator);
             return CreatedAtRoute("GetEducator", new {id = educator.EducatorId } , educator.EducatorId);
         }
 
-        public async Task<IHttpActionResult> Put(int id, Educator educator)
+        [HttpPut]
+        [Route("api/Educators/{id}")]
+        public async Task<IHttpActionResult> Put(int id, [FromBody]Educator educator)
         {
-            if (await Service.ReadAsync(id) != null)
+            if (await Service.ReadAsync(id) == null)
                 return NotFound();
             educator.EducatorId = id;
             await Service.UpdateAsync(educator);
             return StatusCode(System.Net.HttpStatusCode.NoContent);
         }
 
+        [Route("api/Educators/{id}")]
         public async Task<IHttpActionResult> Delete(int id)
         {
-            if (await Service.ReadAsync(id) != null)
+            if (await Service.ReadAsync(id) == null)
                 return NotFound();
 
             await Service.DeleteAsync(id);

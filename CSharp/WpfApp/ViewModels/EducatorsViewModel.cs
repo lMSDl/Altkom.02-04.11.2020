@@ -1,5 +1,5 @@
-﻿using DAL.Services;
-using Models;
+﻿using Models;
+using Services.ClientService;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace WpfApp.ViewModels
         }
 
         public override ICommand AddCommand => new CustomCommand(x => AddOrEdit(new Educator()));
-        public ICommand FilterCommand => new CustomCommand(async x => People = new ObservableCollection<Educator>( await Service.ReadBySpecializationAsync(null)));
+        public ICommand FilterCommand => new CustomCommand(async x => People = new ObservableCollection<Educator>( await Service.ReadBySpecializationAsync("asd")));
 
         protected override Window GetDialogView(Educator person)
         {
