@@ -59,6 +59,13 @@ namespace WpfApp.ViewModels
 
             var json = ToJsonString(person);
             var xNode = JsonConvert.DeserializeXNode(json, person.GetType().Name);
+
+            using (var word = new WordDoc())
+            {
+                word.CreateDocument();
+                word.AppendText(xNode.ToString());
+                word.SaveAs(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + $"\\{person.FullName}.docx");
+            }
         }
 
         protected void ToJson(T person)
