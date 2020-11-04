@@ -1,6 +1,7 @@
 ﻿using ConsoleApp.Delegates;
 using ConsoleApp.Indexers;
 using ConsoleApp.Lambda;
+using ConsoleApp.Operators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            var example = new IndexerExample();
+            var example = new OperatorsExample();
             example.Test();
 
             ServiceReference3.ICalculator calculator = new ServiceReference3.CalculatorClient();

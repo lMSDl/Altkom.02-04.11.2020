@@ -67,6 +67,7 @@
     <Compile Include="Indexers\IndexerExample.cs" />
     <Compile Include="Lambda\LambdaExample.cs" />
     <Compile Include="Lambda\LinqExamples.cs" />
+    <Compile Include="Operators\OperatorsExample.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
