@@ -47,6 +47,7 @@
     <Compile Include="Delegates\DelegateExample.cs" />
     <Compile Include="Delegates\EventExample.cs" />
     <Compile Include="Delegates\MulticastDelegateExample.cs" />
+    <Compile Include="Indexers\IndexerExample.cs" />
     <Compile Include="Lambda\LambdaExample.cs" />
     <Compile Include="Lambda\LinqExamples.cs" />
     <Compile Include="Program.cs" />

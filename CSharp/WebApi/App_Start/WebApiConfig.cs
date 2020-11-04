@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation.WebApi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -24,6 +25,8 @@ namespace WebApi
             config.Formatters.JsonFormatter.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore;
 
             config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+
+            FluentValidationModelValidatorProvider.Configure(config);
         }
     }
 }

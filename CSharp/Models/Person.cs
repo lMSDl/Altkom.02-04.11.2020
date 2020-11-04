@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public abstract class Person : ICloneable
+    public abstract class Person : DataErrorInfo, ICloneable
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

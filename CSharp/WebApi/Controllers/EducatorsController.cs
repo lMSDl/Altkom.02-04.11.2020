@@ -43,6 +43,9 @@ namespace WebApi.Controllers
 
         public async Task<IHttpActionResult> Post([FromBody]Educator educator)
         {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
             educator = await Service.CreateAsync(educator);
             return CreatedAtRoute("GetEducator", new {id = educator.EducatorId } , educator.EducatorId);
         }
@@ -51,6 +54,9 @@ namespace WebApi.Controllers
         [Route("api/Educators/{id}")]
         public async Task<IHttpActionResult> Put(int id, [FromBody]Educator educator)
         {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
             if (await Service.ReadAsync(id) == null)
                 return NotFound();
             educator.EducatorId = id;
